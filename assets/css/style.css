@@ -2,27 +2,6 @@ body {
     background: #ece3e2;
 }
 
-h3,
-h2 {
-    color: #f8777d;
-}
-
-h3 {
-    margin-top: 10px;
-}
-
-.navbar {
-    background: #0d1b46;
-    opacity: 0.7;
-}
-
-#instructions,
-#bunchaNumbers,
-#myPics {
-    border: 1px solid #0d1b46;
-    margin-top: 10px;
-}
-
 
 .container {
     margin: auto;
@@ -30,14 +9,57 @@ h3 {
     height: 85%;
 }
 
+h3,
+h2 {
+    color: #f8777d;
+    font-family: 'Audiowide', cursive;
+}
+
+h3 {
+    margin-top: 10px;
+}
+
+.navbar,
+.card-body {
+    background: #0d1b46;
+    opacity: 0.75;
+}
+
+.btn {
+    background: #f8777d;
+    color: #0d1b46;
+}
+
+.card-body,
+.btn {
+    justify-content: space-evenly;
+}
+
+#instructions,
+#bunchaNumbers,
+#myPics {
+    border: 1px solid #0d1b46;
+    margin-top: 10px;
+    background: #ece3e2
+}
+
+#instructions {
+    font-size: 15px;
+    padding: 2px;
+}
+
 #bunchaNumbers {
     height: 60px;
-    font-size: 150%;
+    font-size: 1rem;
+    font-family: 'Monoton', cursive;
+    padding-top: 12px;
+    color: #0d1b46;
+    text-align: center;
 }
 
 #myPics {
-    height: 50%;
-    padding: 10px;
+    height: 60%;
+    padding: 25px 5px 25px 5px;
 }
 
 /* #picture1,
