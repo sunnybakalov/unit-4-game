@@ -1,69 +1,103 @@
 //this allows our html to load before the jQuery
 $(document).ready(function () {
-//declaring variables. these are the numbers that we start the game at.
-let goalNumber = 64;
-let score = 0
-let wins = 0
-let losses = 0
-
-//displaying the starting numbers on the HTML page
-$("#goalNumber").text(goalNumber);
-$("#currentScore").text(score);
-$("#myWins").text(wins);
-$("#myLosses").text(losses);
-
-//the object that holds the value of the images
-var player = {
-    lebron: 10,
-    carter: 3,
-    jordan: 8,
-    shaq: 7
-};
-
-//functions that capture the button click
-//ex: the function name that you call is: $("#lebronButton").click()
-//lebron james
-$("#lebronButton").click(function() {
-    var lebron = score + player.lebron;
-    console.log("I'm LeBron");
-    $("#currentScore").text(lebron);
-});
-//vince carter
-$("#carterButton").click(function() {
-    var vince = score + player.carter;
-    console.log("I'm Vince");
-    $("#currentScore").text(vince);
-});
-//michael jordan
-$("#jordanButton").click(function() {
-    var jordan = score + player.jordan;
-    console.log("I'm Jordan");
-    $("#currentScore").text(jordan);
-});
-//shaquille o'neal
-$("#shaqButton").click(function() {
-    var shaq = score + player.shaq;
-    console.log("I'm Shaq");
-    $("#currentScore").text(shaq);
-});
-
-if (score === goalNumber) {
-    alert("You win! Keep going!")
-} else if (score >= goalNumber) {
-    alert("Too many points. Let's dial that down a notch. Try again!")
-}
-
-
-if ($("#lebronButton").click() || $("#carterButton").click() || $("#jordanButton").click() || $("#shaqButton").click()) {
-
-}
-
-// if ($( "button" ).click()) {
-//     console.log("hello world");
-// } 
-
-// $(".btn").on("click", function() {
-//     console.log("hello world");
-// });
-
-});
+    //declaring variables. these are the numbers that we start the game at.
+    let goalNumber = Math.floor(Math.random() * 120) + 19;
+    let score = 0
+    let wins = 0
+    let losses = 0
+    
+    //displaying the starting numbers on the HTML page
+    $("#goalNumber").text(goalNumber);
+    $("#currentScore").text(score);
+    $("#myWins").text(wins);
+    $("#myLosses").text(losses);
+    
+    //the object that holds the value of the images
+    var player = {
+        lebron: Math.floor(Math.random() * 12) + 1,
+        carter: Math.floor(Math.random() * 12) + 1,
+        jordan: Math.floor(Math.random() * 12) + 1,
+        shaq: Math.floor(Math.random() * 12) + 1
+    };
+    
+    //functions that capture the button click
+    //ex: the function name that you call is: $("#lebronButton").click()
+    //lebron james
+    $("#lebronButton").click(function() {
+        console.log("I'm LeBron");
+        score = score + player.lebron;
+        updateDOM()
+        checkScore();
+    });
+    //vince carter
+    $("#carterButton").click(function() {
+        console.log("I'm Vince");
+        score = score + player.carter;
+        updateDOM()
+        checkScore();
+    });
+    //michael jordan
+    $("#jordanButton").click(function() {
+        console.log("I'm Jordan");
+        score = score + player.jordan;
+        updateDOM()
+        checkScore();
+        
+    });
+    //shaquille o'neal
+    $("#shaqButton").click(function() {
+        console.log("I'm Shaq");
+        score = score + player.shaq;
+        updateDOM()
+        checkScore();
+    });
+    
+    function updateDOM(){
+        $("#currentScore").text(score);
+    }
+    
+    function checkScore(){
+        console.log("checkscore is running");
+        if (score === goalNumber) {
+            alert("You win! Keep going!")
+            wins += 1
+            reset()
+        } else if (score >= goalNumber) {
+            alert("Too many points. Let's dial that down a notch. Try again!")
+            losses += 1
+            reset()
+        }
+    }
+    function reset(){
+        goalNumber = Math.floor(Math.random() * 120) + 19;
+    
+        score = 0;
+    
+        player = {
+            lebron: Math.floor(Math.random() * 12) + 1,
+            carter: Math.floor(Math.random() * 12) + 1,
+            jordan: Math.floor(Math.random() * 12) + 1,
+            shaq: Math.floor(Math.random() * 12) + 1
+        };
+    
+        $("#goalNumber").text(goalNumber);
+        $("#currentScore").text(score);
+        $("#myWins").text(wins);
+        $("#myLosses").text(losses);
+        console.log(score);
+    }
+    
+    
+    // if ($("#lebronButton").click() || $("#carterButton").click() || $("#jordanButton").click() || $("#shaqButton").click()) {
+    
+    // }
+    
+    // if ($( "button" ).click()) {
+    //     console.log("hello world");
+    // } 
+    
+    // $(".btn").on("click", function() {
+    //     console.log("hello world");
+    // });
+    
+    });
